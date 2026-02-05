@@ -50,6 +50,9 @@ export const Navbar = () => {
                     <div className="flex gap-6 text-sm font-medium text-gray-300">
                         <Link to="/" className="hover:text-white transition-colors font-bold">Home</Link>
                         <Link to="/my-list" className="hover:text-white transition-colors">My List</Link>
+                        <Link to="/series" className="hover:text-white transition-colors">TV Shows</Link>
+                        <Link to="/movies" className="hover:text-white transition-colors">Movies</Link>
+                        <Link to="/latest" className="hover:text-white transition-colors">New & Popular</Link>
                     </div>
                 </div>
 
