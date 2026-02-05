@@ -31,6 +31,25 @@ export const clearSession = () => {
     localStorage.removeItem(CURRENT_USER_KEY)
 }
 
+export const updateUser = (updatedUser: UserData) => {
+    const data = localStorage.getItem(USERS_KEY);
+    const users: UserData[] = data ? JSON.parse(data) : [];
+
+    const index = users.findIndex((u) => u.id === updatedUser.id);
+    if( index !== -1) {
+        users[index] = updatedUser;
+        localStorage.setItem(USERS_KEY, JSON.stringify(users))
+
+        const  sessionData = localStorage.getItem(CURRENT_USER_KEY);
+        if(sessionData) {
+            const session = JSON.parse(sessionData);
+            if(session.id === updatedUser.id) {
+                localStorage.setItem(USERS_KEY, JSON.stringify(updatedUser))
+            }
+        }
+    }
+};
+
 export const getCurrentSession = (): UserData | null => {
     const data = localStorage.getItem(CURRENT_USER_KEY);
     return data ? JSON.parse(data) : null;
