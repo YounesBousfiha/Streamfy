@@ -9,6 +9,7 @@ import { MyListPage } from './pages/MyListPage';
 
 import { MainLayout } from './components/layout/MainLayout';
 import { VideoModal } from './features/movies/components/VideoModal';
+import {SearchPage} from "./pages/SearchPage.tsx";
 
 // Guards
 const ProtectedRoute = () => {
@@ -45,6 +46,7 @@ function App() {
                     <Route element={<MainLayout />}>
                         <Route path="/" element={<HomePage />} />
                         <Route path="/my-list" element={<MyListPage />} />
+                        <Route path="/search" element={<SearchPage />} />
 
                         {/* Fallbacks */}
                         <Route path="/series" element={<HomePage />} />
