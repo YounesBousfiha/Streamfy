@@ -55,6 +55,16 @@ export const searchMovies = async (query: string): Promise<MovieDetails[]> => {
     );
 }
 
+export const fetchSimilarMovies = async (movieId: number): Promise<Movie[]> => {
+    try {
+        const { data } = await axiosClient.get(`/movie/${movieId}/similar`);
+        return data.results;
+    } catch (error) {
+        console.error("Error fetching similar movies:", error);
+        return [];
+    }
+}
+
 export const fetchMovies = async (url: string): Promise<Movie[]> => {
     const { data } = await axiosClient.get(url);
     return data.results;
