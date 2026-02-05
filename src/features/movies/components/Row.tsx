@@ -1,8 +1,8 @@
 import {useEffect, useRef, useState} from "react";
 import type {Movie} from "../../../types";
-import {tmdb} from "../../../lib/api.ts";
 import {ChevronLeft, ChevronRight} from "lucide-react";
 import {MovieCard} from "./MovieCard.tsx";
+import axiosClient from "../../../lib/axios.ts";
 
 interface RowProps {
     title: string;
@@ -18,7 +18,7 @@ export const Row = ({ title, fetchUrl, isLargeRow}: RowProps) => {
 
     useEffect(() => {
         async function fetchData() {
-            const request = await tmdb.get(fetchUrl);
+            const request = await axiosClient.get(fetchUrl);
             setMovies(request.data.results);
         }
         fetchData();
@@ -52,7 +52,7 @@ export const Row = ({ title, fetchUrl, isLargeRow}: RowProps) => {
                 {/* The Row Container */}
                 <div
                     ref={rowRef}
-                    className="flex items-center gap-2 overflow-x-scroll scrollbar-hide scroll-smooth py-4 pr-12"
+                    className="flex items-center gap-2 overflow-x-scroll scrollbar-hide scroll-smooth py-12 pr-12"
                     style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }} // Hide scrollbar
                 >
                     {movies.map((movie) => (
