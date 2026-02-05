@@ -1,7 +1,8 @@
 import {useEffect, useState} from "react";
 import type {Movie} from "../../../types";
 import {useModalStore} from "../../../store/modalStore.ts";
-import {getImageUrl, requests, tmdb} from "../../../lib/api.ts";
+import {getImageUrl, requests} from "../../../lib/api.ts";
+import axiosClient from "../../../lib/axios.ts";
 import {Button} from "../../../components/ui/Button.tsx";
 import {Info, Play} from "lucide-react";
 
@@ -11,7 +12,7 @@ export const HeroSection = () => {
 
     useEffect(() => {
         async function fetchData() {
-            const request = await tmdb.get(requests.fetchTrending);
+            const request = await axiosClient.get(requests.fetchTrending);
             if (request.data && request.data.results && request.data.results.length > 0) {
                 const randomMovie = request.data.results[
                     Math.floor(Math.random() * request.data.results.length)
