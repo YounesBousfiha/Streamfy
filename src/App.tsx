@@ -8,9 +8,9 @@ import { HomePage } from './pages/HomePage';
 import { MyListPage } from './pages/MyListPage';
 
 import { MainLayout } from './components/layout/MainLayout';
-import { VideoModal } from './features/movies/components/VideoModal';
 import {SearchPage} from "./pages/SearchPage.tsx";
 import {CategoryPage} from "./pages/CategoryPage.tsx";
+import {DetailModal} from "./features/movies/components/DetailModal.tsx";
 
 // Guards
 const ProtectedRoute = () => {
@@ -33,7 +33,7 @@ function App() {
 
     return (
         <BrowserRouter>
-            <VideoModal />
+            <DetailModal />
             <Routes>
 
                 {/* Public Routes (Login/Register) */}
