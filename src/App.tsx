@@ -10,6 +10,7 @@ import { MyListPage } from './pages/MyListPage';
 import { MainLayout } from './components/layout/MainLayout';
 import { VideoModal } from './features/movies/components/VideoModal';
 import {SearchPage} from "./pages/SearchPage.tsx";
+import {CategoryPage} from "./pages/CategoryPage.tsx";
 
 // Guards
 const ProtectedRoute = () => {
@@ -47,10 +48,15 @@ function App() {
                         <Route path="/" element={<HomePage />} />
                         <Route path="/my-list" element={<MyListPage />} />
                         <Route path="/search" element={<SearchPage />} />
-
                         {/* Fallbacks */}
-                        <Route path="/series" element={<HomePage />} />
-                        <Route path="/movies" element={<HomePage />} />
+                        <Route
+                            path="/series"
+                            element={<CategoryPage title="Séries TV" type="tv" />}
+                        />
+                        <Route
+                            path="/movies"
+                            element={<CategoryPage title="Films" type="movie" />}
+                        />
                         <Route path="/latest" element={<HomePage />} />
                     </Route>
                 </Route>
