@@ -14,6 +14,7 @@ export const requests = {
     fetchHorrorMovies: `/discover/movie?with_genres=27`,
     fetchRomanceMovies: `/discover/movie?with_genres=10749`,
     fetchDocumentaries: `/discover/movie?with_genres=99`,
+    searchMulti: `/search/multi`
 };
 
 
@@ -40,6 +41,18 @@ export const fetchMovieDetails = async (movieId: number): Promise<MovieDetails> 
         console.error("Error fetching data movie: ", e);
         throw  e;
     }
+}
+
+export const searchMovies = async (query: string): Promise<MovieDetails[]> => {
+    if(!query) return [];
+
+    const { data } = await axiosClient.get(requests.searchMulti, {
+        params: { query }
+    });
+
+    return data.results.filter(
+        (item: any) => (item.backdrop_path || item.poster_path) && item.type !== 'person'
+    );
 }
 
 export const fetchMovies = async (url: string): Promise<Movie[]> => {
