@@ -106,6 +106,9 @@ export const Navbar = () => {
                                 <p className="text-xs text-gray-400">Hello,</p>
                                 <p className="font-bold truncate text-sm capitalize">{user?.username}</p>
                             </div>
+                            <Link to="/profile" className="px-4 py-2 hover:bg-gray-800 text-sm text-gray-300 hover:text-white text-left">
+                                Account
+                            </Link>
                             <div className="border-t border-white/10">
                                 <button
                                     onClick={handleLogout}
