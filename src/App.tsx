@@ -11,6 +11,7 @@ import { MainLayout } from './components/layout/MainLayout';
 import {SearchPage} from "./pages/SearchPage.tsx";
 import {CategoryPage} from "./pages/CategoryPage.tsx";
 import {DetailModal} from "./features/movies/components/DetailModal.tsx";
+import {ProfilePage} from "./pages/ProfilePage.tsx";
 
 // Guards
 const ProtectedRoute = () => {
@@ -58,6 +59,7 @@ function App() {
                             element={<CategoryPage title="Films" type="movie" />}
                         />
                         <Route path="/latest" element={<HomePage />} />
+                        <Route path="/profile" element={<ProfilePage />} />
                     </Route>
                 </Route>
 
