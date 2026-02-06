@@ -1,4 +1,4 @@
-import {create} from "zustand/react";
+import {create} from "zustand";
 import {getCurrentSession, updateUser} from "../lib/storage.ts";
 import type {UserData} from "../types";
 
